@@ -1,30 +1,49 @@
-# hello-express
+# Backend NodeJS (With Vanilla Javascript) Internship (Remote)
 
-A server that serves a webpage, its resources, and some data
+## What we need you to do
+Create a single express API endpoint route [HTTP POST] that accepts the following payload 
+{
+  "csv":{
+    "url": "https://linktocsv",
+    "select_fields": ["First Name", "Last Name", "Age"],
+  }
+}
 
+### Your endpoint should (among other things):
+1. Ensure the URL contains a valid CSV 
+2. Convert the CSV to a JSON array
+3. The JSON array should only contain the fields specified in the "select_fields" parameter.
+An example: If the CSV has 2 items, and the following fields, "First Name, Last Name, Age, DOB, Mobile, Email, MatricNumber"
+Based on the example payload shared above, the returned JSON array should have this structure:
+[
+  {
+    "First Name":"Ade",
+    "Last Name":"Stark",
+    "Age": 21 
+  },
+  {
+    "First Name":"Ade",
+    "Last Name":"Stark",
+    "Age": 21 
+  }
+]
+(PS: If the select_fields parameter is not passed, your service should return all fields)
+4. Once you have parsed the results, generate a random identifier and return an API response that looks like the below:
+{
+  "conversion_key": "ZEMAHBb54vkFXPHA9jHY6Xp3gMnMAKYg",
+  "json": [
+    {
+      "First Name":"Ade",
+      "Last Name":"Stark",
+      "Age": 21 
+    },
+    {
+      "First Name":"Ade",
+      "Last Name":"Stark",
+      "Age": 21 
+    }
+  ]
+}
 
-## Your Project
-
-On the front-end,
-
-- Edit `views/index.html` to change the content of the webpage
-- `public/client.js` is the javacript that runs when you load the webpage
-- `public/style.css` is the styles for `views/index.html`
-- Drag in `assets`, like images or music, to add them to your project
-
-On the back-end,
-
-- your app starts at `server.js`
-- add frameworks and packages in `package.json`
-- safely store app secrets in `.env` (nobody can see this but you and people you invite)
-
-Click `Show` in the header to see your app live. Updates to your code will instantly deploy.
-
-
-## Made by [Glitch](https://glitch.com/)
-
-**Glitch** is the friendly community where you'll build the app of your dreams. Glitch lets you instantly create, remix, edit, and host an app, bot or site, and you can invite collaborators or helpers to simultaneously edit code with you.
-
-Find out more [about Glitch](https://glitch.com/about).
-
-( ᵔ ᴥ ᵔ )
+The 4 items listed above are the basic requirements. Feel free to extend or add any extra thing that comes to mind.
+Your implementation should be done on Glitch (https://glitch.com) and in a single server.js file (You can use the default Glitch Express scaffold).
